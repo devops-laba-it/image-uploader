@@ -33,9 +33,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_SECRET_REGION }}
 
-      - name: Deploy to AWS Lambda
-        run: aws lambda update-function-code --function-name laba-it-devops-image-uploader --zip-file fileb://app.zip
-
       - name: Update Lambda Function Configuration
         run: |
           aws lambda update-function-configuration \
@@ -46,3 +43,6 @@ jobs:
               BOOKS_AWS_REGION=${{ secrets.AWS_SECRET_REGION }},
               BUCKET_NAME=laba-it-devops-image-bucket
             }"
+
+      - name: Deploy to AWS Lambda
+        run: aws lambda update-function-code --function-name laba-it-devops-image-uploader --zip-file fileb://app.zip

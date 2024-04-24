@@ -1,22 +1,19 @@
 # Image-Uploader
 
-To aplikacja, która pobiera obrazki z kolejki SQS, przetwarza je i zapisuje w S3
+This is an application designed to retrieve images from an SQS queue, process them, and store them in S3.
 
-## Lambda
+## Lambda Function
 
-Do wdrożenia aplikacji na AWS wykorzystano funkcję lambda.
-Jest to funkcja triggerowana pojawieniem się wiadomości w kolejce SQS.
+For deployment on AWS, a Lambda function has been utilized. It is triggered by the appearance of a message in the SQS queue.
 
-## Zmienne środowiskowe
+## Environment Variables
 
-Aplikacja wykorzystuje zmienne środowiskowe, które należy ustawić w AWS.
+The application relies on environment variables, which need to be configured in AWS.
 
 - `BOOKS_AWS_ACCESS_KEY_ID`
 - `BOOKS_AWS_SECRET_ACCESS_KEY`
 - `BOOKS_AWS_REGION`
 - `BUCKET_NAME`
-
-Uwaga: Aby uniknąć przekazywania access key, secret acccess key oraz regionu, można użyć odpowiedniego Service Account.
 
 ## Pipeline
 
@@ -24,12 +21,10 @@ Uwaga: Aby uniknąć przekazywania access key, secret acccess key oraz regionu, 
 make lint
 ```
 
-Aby utworzyć plik `app.zip` należy wykonać polecenie:
+To generate the `app.zip` file, execute the following command:
 
 ```bash
 make build
 ```
 
-Powyższy plik, należy wgrać na AWS jako funkcję lambda.
-
-
+The resulting file should be uploaded to AWS as a Lambda function.
